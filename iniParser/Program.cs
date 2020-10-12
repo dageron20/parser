@@ -11,8 +11,9 @@ namespace iniParser
             var f1 = inipars.readData("COMMON", "StatisterTimeMs");
             Console.WriteLine(f1);
 
-            var f2 = inipars.TryGetDouble("ADC_DEV", "BufferLenSecons");
-            Console.WriteLine(f2);
+
+           /* var f2 = inipars.TryGetDouble("ADC_DEV", "BufferLenSecons");
+            Console.WriteLine(f2);*/
 
             /*var f3 = inipars.TryGetInt("ADC_DEV", "BufferLenSecons");
             Console.WriteLine(f3);*/

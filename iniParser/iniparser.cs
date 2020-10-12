@@ -79,8 +79,10 @@ namespace iniParser
                                                 keyPair[1] = Regex.Replace(keyPair[1], @";.+$", string.Empty); // удаляем комментарий, если он находится в строке
                                                 value = keyPair[1];
                                             }
-
-                                            pairsParameters.Add(datapairs, value);
+                                            if (pairsParameters[datapairs] != null)
+                                                changeParameter(datapairs.section, datapairs.key, value);
+                                            else
+                                                pairsParameters.Add(datapairs, value);                  
                                         }
                                     }
                                 }
@@ -113,7 +115,10 @@ namespace iniParser
                 throw new myExeptions.InvalidParametr("Section or parametr not found");
             }
             else
+            {
                 return (string)pairsParameters[datapairs];
+            }
+                
         }
 
         public void changeParameter(string section, string setting, string value)
@@ -125,6 +130,7 @@ namespace iniParser
             if (pairsParameters.ContainsKey(datapairs))
             {
                 pairsParameters.Remove(datapairs);
+                pairsParameters.Add(datapairs, value);
             }
         }
 
